@@ -1,0 +1,55 @@
+<ion-view view-title="Pedido - Pesquisar">
+
+    <ion-nav-bar class="bar-calm">
+    </ion-nav-bar>
+
+    <ion-content class="padding" style="background-color: #efd283">
+        <form id="formulario" ng-submit="pesquisar()" method="POST">
+            <label class="item item-input">
+                <span class="input-label">Date</span>
+                <input type="date" id="data"/>
+            </label>
+
+            <br/>
+
+            <button class="button button-stable" type="submit" style="width: 100%" id="pesquisar">
+                Pesquisar
+            </button>
+
+            <br/>
+
+            <div class="list card" ng-show="pedido != null">
+                <div class="item item-divider">Pedido: <b>{{pedido.idPedido}}</b></div>
+                <div class="item item-body" style="background-color: #fffbcc">
+                    <div>
+                        <b>Data do Pedido:</b> {{pedido.dataPedido}} <br/>
+                        <b>Observação:</b> {{pedido.observacao}} <br/>
+                        <b>Cliente:</b> {{pedido.desCliente}} <br/>
+                        <b>Usuário de Cadastro:</b> {{pedido.desUsrCad}} <br/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="list card" ng-show="pedido != null">
+                <div class="item item-divider">Produtos</div>
+                <div class="item item-body" style="background-color: #fffbcc">
+                    <ion-list style="background-color: #fffbcc">
+                        <ion-item ng-repeat="registro in listaPedidoProduto" style="background-color: #fffbcc">
+                            {{registro.desProduto}}  <br/>
+                            <b>Quantidade:</b> {{registro.qtdSolicitada}}
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </div>
+        </form>
+
+
+        <div style="heigth: 20px;">
+
+        </div>
+
+    </ion-content>
+
+</ion-view>
+

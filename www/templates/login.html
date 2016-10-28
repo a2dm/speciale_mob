@@ -1,0 +1,31 @@
+<ion-view view-title="Login">
+
+
+    
+    <ion-content class="padding" style="background: url('/img/fundo.png')">
+
+        <div style="width: 100%; horiz-align: center;">
+            <img src="img/logo.png" alt="" width="100%">
+
+        </div>
+        <br/>
+
+        <div align="center">
+            Realize o login para utilizar o aplicativo da Speciale
+
+        </div>
+
+        <form id="formulario" ng-submit="login()" method="POST">
+            <div class="list list-inset">
+                <label class="item item-input">
+                    <input type="text" placeholder="Login" id="login">
+                </label>
+                <label class="item item-input">
+                    <input type="password" placeholder="Senha" id="senha">
+                </label>
+            </div>
+            <button class="button button-block button-stable" type="submit">Entrar</button>
+        </form>
+    </ion-content>
+</ion-view>
+

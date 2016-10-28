@@ -1,0 +1,10 @@
+{
+  "name": "speciale",
+  "app_id": "",
+  "proxies": [
+      {
+        "path" : "/speciale",
+        "proxyUrl": "http://localhost:8080/spdmws"
+      }
+]
+}
