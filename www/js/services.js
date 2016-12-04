@@ -3,11 +3,11 @@ angular.module('starter.services', ['ngResource'])
     .factory('LoginService', ['$http', '$q', LoginService])
     .factory('PedidoService', ['$http', '$q', PedidoService]);
 
-    function LoginService ($http, $q) {
+    function LoginService($http, $q) {
 
         return {
 
-            login: function (login, senha) {
+            login: function(login, senha) {
                 var request = {
                     method: 'POST',
                     url: '/speciale/LoginWS/login',
@@ -24,11 +24,11 @@ angular.module('starter.services', ['ngResource'])
         }
     }
 
-    function PedidoService ($http, $q) {
+    function PedidoService($http, $q) {
 
         return {
 
-            getPedido: function (dataPedido, idCliente) {
+            getPedido: function(dataPedido, idCliente) {
 
                 var request = {
                     method: 'POST',
@@ -39,7 +39,43 @@ angular.module('starter.services', ['ngResource'])
                     data: 'dataPedido=' + dataPedido + '&idCliente=' + idCliente
                 };
 
-                return $http(request).then(function(response){
+                return $http(request).then(function(response) {
+                    return response.data;
+                });
+            },
+
+            getListaProdutoByCliente: function(idCliente) {
+
+                var request = {
+                    method: 'POST',
+                    url: '/speciale/PedidoWS/getListaProdutoByCliente',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: 'idCliente=' + idCliente
+                };
+
+                return $http(request).then(function(response) {
+                    return response.data;
+                });
+            },
+
+            cadastrar: function(idCliente, idUsuario, data, observacao, listaProdutosAdicionados) {
+
+                var request = {
+                    method: 'POST',
+                    url: '/speciale/PedidoWS/cadastrar',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: 'idCliente=' + idCliente 
+                        + '&idUsuario=' + idUsuario
+                        + '&data=' + data
+                        + '&observacao=' + observacao
+                        + '&produtosAdicionadosJson=' + angular.toJson(listaProdutosAdicionados)
+                };
+
+                return $http(request).then(function(response) {
                     return response.data;
                 });
             }

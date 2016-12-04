@@ -1,0 +1,88 @@
+
+
+<ion-view view-title="Pedido - Cadastrar">
+
+    <ion-nav-bar class="bar-calm">
+    </ion-nav-bar>
+
+    <ion-content class="padding" style="background-color: #efd283">
+        <form id="formulario">
+            <label class="item item-input">
+                <span class="input-label">Data do Pedido *</span>
+                <input type="date" id="data" ng-model="data"/>
+            </label>
+
+            <label class="item item-input">
+                <span class="input-label">Observação</span>
+                <textarea rows="4" id="observacao" ng-model="observacao"></textarea>
+            </label>
+
+            <br/>
+
+            <fieldset>
+                <h5>Adicionar Produtos do Pedido</h5>
+                <hr>
+
+                <label class="item item-input">
+                    <span class="input-label">Produto *</span>
+                    <select ng-model="produtoSelecionado" ng-options="produto as produto.desProduto for produto in listaProdutoCliente">
+                        <option value="">Escolha o Produto</option>
+                    </select>
+                </label>
+
+                <label class="item item-input">
+                    <span class="input-label">Quantidade *</span>
+                    <input type="text" id="qtdSolicitada" ng-model="qtdSolicitada"/>
+                </label>
+
+                <button id="adicionar" ng-click="adicionarProdutoPedido()" style="border:none; background:none;">
+                    <img ng-src="img/add.png" alt="Adicionar" height="22px" width="22px">
+                </button>
+            </fieldset>
+
+            <br/>
+
+            <fieldset>
+                <h5>Lista dos Produtos do Pedido</h5>
+                <hr>
+
+                <table id="tab">
+                    <thead>
+                        <tr id="trow">
+                           <td style="width: 10%; text-align: center;">Código</td>
+                           <td style="width: 70%; text-align: center;">Descrição</td>
+                           <td style="width: 10%; text-align: center;">Quantidade</td>
+                           <td style="width: 10%; text-align: center;"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="produto in listaProdutosAdicionados">
+                            <td style="text-align: right;">{{produto.idProduto}}</td>
+                            <td style="text-align: left;">{{produto.desProduto}}</td>
+                            <td style="text-align: center;">{{produto.qtdSolicitada}}</td>
+                            <td style="text-align: center;">
+                                <button id="excluir" style="border:none; background: none">
+                                    <img ng-src="img/inativar.png" alt="Excluir" height="15px" width="15px" ng-click="excluirProdutoPedido($index)">
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+
+            <br/>
+
+            <button class="button button-stable" type="submit" style="width: 100%" id="salvar" ng-click="cadastrar()">
+                Gravar
+            </button>
+            <button class="button button-stable" type="submit" style="width: 100%" id="salvar" ng-click="cadastrar()">
+                Cancelar
+            </button>
+        </form>
+
+        <div style="heigth: 20px;" ng-init="init()">
+
+        </div>
+    </ion-content>
+</ion-view>
+

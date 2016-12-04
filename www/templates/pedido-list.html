@@ -6,7 +6,7 @@
     <ion-content class="padding" style="background-color: #efd283">
         <form id="formulario" ng-submit="pesquisar()" method="POST">
             <label class="item item-input">
-                <span class="input-label">Date</span>
+                <span class="input-label">Data do Pedido</span>
                 <input type="date" id="data"/>
             </label>
 
@@ -19,7 +19,7 @@
             <br/>
 
             <div class="list card" ng-show="pedido != null">
-                <div class="item item-divider">Pedido: <b>{{pedido.idPedido}}</b></div>
+                <div class="item item-divider">Protocolo: <b>{{pedido.idPedido}}</b></div>
                 <div class="item item-body" style="background-color: #fffbcc">
                     <div>
                         <b>Data do Pedido:</b> {{pedido.dataPedido}} <br/>
@@ -32,7 +32,7 @@
             </div>
 
             <div class="list card" ng-show="pedido != null">
-                <div class="item item-divider">Produtos</div>
+                <div class="item item-divider">Produtos do Pedido</div>
                 <div class="item item-body" style="background-color: #fffbcc">
                     <ion-list style="background-color: #fffbcc">
                         <ion-item ng-repeat="registro in listaPedidoProduto" style="background-color: #fffbcc">
@@ -44,12 +44,8 @@
             </div>
         </form>
 
-
-        <div style="heigth: 20px;">
+        <div style="heigth: 20px;" ng-init="init()">
 
         </div>
-
     </ion-content>
-
 </ion-view>
-

@@ -47,6 +47,17 @@ angular.module('starter', ['ionic', 'starter.controllers','starter.services','ng
                 controller: 'PedidoListController'
               }
             }
+          })
+
+          .state('app.pedido-cad', {
+            cache: false,
+            url: '/pedido-cad',
+            views: {
+              'menuContent': {
+                templateUrl: 'templates/pedido-cad.html',
+                controller: 'PedidoCadController'
+              }
+            }
           });
 
       // if none of the above states are matched, use this as the fallback
